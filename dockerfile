@@ -1,11 +1,4 @@
-FROM python:3.9-alpine
-
-WORKDIR .
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
-COPY . .
-
-CMD ["python", "script.py"]
+FROM php:7.2-apache
+COPY ./web/ /var/www/html/
+EXPOSE 80
+CMD ["apachectl", "-D", "FOREGROUND"]
